@@ -69,6 +69,26 @@ public class AisNalogUtility {
 	public static Logger LOGGER = null;
 
 	static JSplitPane SPLIT_PANE = null;
+	
+	public static JButton buttonLastFix() {
+		BUTTON_INSTALL_ALL_FIX = new JButton("Установить новые фиксы АИС Налог-3 ПРОМ");
+
+		BUTTON_INSTALL_ALL_FIX.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!((JButton) e.getSource()).isEnabled())
+					return;
+
+				LoadingThread.IS_RUN = true;
+				LOAD_THREAD = new LoadingThread();
+				LOAD_THREAD.start();
+				FixThread.isLastFix = true;
+				Thread fix_thread = new FixThread();
+				fix_thread.start();
+			}
+		});
+		return BUTTON_INSTALL_ALL_FIX;
+	}
 
 	public static JButton buttonAllFix() {
 		BUTTON_INSTALL_ALL_FIX = new JButton("Установить все фиксы для АИС Налог-3 ПРОМ");

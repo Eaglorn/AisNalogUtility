@@ -11,6 +11,7 @@ import ru.eaglorn.aisnalogutility.config.Data;
 public class FixThread extends Thread {
 
 	public static boolean isAllFix = false;
+	public static boolean isLastFix = false;
 
 	public static void decompress7ZipEmbedded(File source, File destination) throws IOException, InterruptedException {
 		ProcessBuilder pb = new ProcessBuilder().inheritIO().command("c://AisNalogUtility//7zip/7z.exe", "x",
