@@ -10,6 +10,9 @@ import com.google.gson.stream.JsonReader;
 import ru.eaglorn.aisnalogutility.AisNalogUtility;
 
 public class ConfigApp {
+	public String NET_PATH = "";
+	public String VERSION = "";
+	
 	public static void getConfig() {
 		try {
 			JsonReader reader = new JsonReader(new FileReader("c:\\AisNalogUtility\\config\\config.json"));
@@ -19,7 +22,4 @@ public class ConfigApp {
 			AisNalogUtility.LOGGER.log(Level.WARNING, e.getMessage());
 		}
 	}
-
-	public String NET_PATH = "";
-	public String VERSION = "";
 }

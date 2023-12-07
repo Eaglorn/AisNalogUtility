@@ -59,8 +59,9 @@ public class AisNalogUtility {
 
 	public static JFrame APP = null;
 
-	public final static String APP_VERSION = "5";
+	public final static String APP_VERSION = "6";
 
+	public static JButton BUTTON_INSTALL_LAST_FIX = null;
 	public static JButton BUTTON_INSTALL_ALL_FIX = null;
 	public static JButton BUTTON_INSTALL_CHECKED_FIX = null;
 
@@ -71,9 +72,9 @@ public class AisNalogUtility {
 	static JSplitPane SPLIT_PANE = null;
 	
 	public static JButton buttonLastFix() {
-		BUTTON_INSTALL_ALL_FIX = new JButton("Установить новые фиксы АИС Налог-3 ПРОМ");
+		BUTTON_INSTALL_LAST_FIX = new JButton("Установить новые фиксы АИС Налог-3 ПРОМ");
 
-		BUTTON_INSTALL_ALL_FIX.addActionListener(new ActionListener() {
+		BUTTON_INSTALL_LAST_FIX.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!((JButton) e.getSource()).isEnabled())
@@ -87,7 +88,7 @@ public class AisNalogUtility {
 				fix_thread.start();
 			}
 		});
-		return BUTTON_INSTALL_ALL_FIX;
+		return BUTTON_INSTALL_LAST_FIX;
 	}
 
 	public static JButton buttonAllFix() {
@@ -252,7 +253,7 @@ public class AisNalogUtility {
 				e.printStackTrace();
 			}
 		}
-		
+		/*
 		File dir = new File("ftp:////fap.regions.tax.nalog.ru//Aisnalog3//AisNalog3PROM//");
 		File[] arrFiles = dir.listFiles();
 		List<File> lst = Arrays.asList(arrFiles);
@@ -272,7 +273,7 @@ public class AisNalogUtility {
 			e.printStackTrace();
 			LOGGER.log(Level.WARNING, e.getMessage());
 		}
-
+		 */
 		AIS_VERSION = version;
 
 		JLabel old_version = new JLabel("Установленная версия АИС Налог-3 ПРОМ: " + AIS_VERSION, SwingConstants.CENTER);
@@ -280,6 +281,7 @@ public class AisNalogUtility {
 				SwingConstants.CENTER);
 
 		panel_install.add(old_version);
+		panel_install.add(buttonLastFix());
 		panel_install.add(buttonAllFix());
 		panel_install.add(buttonCheckedFix());
 		panel_install.add(new_version);
